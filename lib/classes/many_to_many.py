@@ -1,38 +1,163 @@
 class Article:
+    
+    all = []
+    
     def __init__(self, author, magazine, title):
         self.author = author
         self.magazine = magazine
         self.title = title
+        type(self).all.append(self)
         
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        if not isinstance(title, str):
+            raise TypeError("Title must be a string.")
+        elif not 5 <= len(title) <= 50:
+            raise ValueError("Title must be within 5 <= title <= 50.")
+        elif hasattr(self, "title"):
+            raise AttributeError("Title cannot be reset.")
+        else:
+            self._title = title
+
+    @property
+    def author(self):
+        return self._author
+
+    @author.setter
+    def author(self, author):
+        if not isinstance(author, Author):
+            raise TypeError("Author must be an instance of Author class.")
+        else:
+            self._author = author
+
+    @property
+    def magazine(self):
+        return self._magazine
+
+    @magazine.setter
+    def magazine(self, magazine):
+        if not isinstance(magazine, Magazine):
+            raise TypeError("Magazine must be an instance of magazine class.")
+        else:
+            self._magazine = magazine
+    
+    def __repr__(self):
+        return f"Article(author={self.author.name}, magazine={self.magazine.name}, title={self.title})"
+
+
+
 class Author:
+    
+    all = []
+    
     def __init__(self, name):
         self.name = name
+        type(self).all.append(self)
 
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        if not isinstance(name, str):
+            raise TypeError("Name must be a string.")
+        elif not len(name) > 0:
+            raise ValueError("Name must be longer than 0 characters.")
+        elif hasattr(self, "name"):
+            raise AttributeError("Name cannot be reset.")
+        else:
+            self._name = name
+    
+    # Returns a list of all the articles the author has written
     def articles(self):
-        pass
+        return [article for article in Article.all if article.author == self]
 
+    # Returns a unique list of magazines for which the author has contributed to
     def magazines(self):
-        pass
+        return list({magazine for magazine in self.articles()})
 
+    # Creates and returns a new Article instance and associates it with that author, the magazine provided
     def add_article(self, magazine, title):
-        pass
+        return Article(self, magazine, title)
 
+    # START HERE
+    # Returns a unique list of strings with the categories of the magazines the author has contributed to
     def topic_areas(self):
         pass
 
+    # def __repr__(self):
+    #     return f"Author(name={self.name})"
+
+
+
 class Magazine:
+    
+    all = []
+    
     def __init__(self, name, category):
         self.name = name
         self.category = category
+        type(self).all.append(self)
 
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        if not isinstance(name, str):
+            raise TypeError("Name must be a string.")
+        elif not 2 <= len(name) <= 16:
+            raise ValueError("Name must be within 2 <= name <= 16.")
+        else:
+            self._name = name
+    
+    @property
+    def category(self):
+        return self._category
+
+    @category.setter
+    def category(self, category):
+        if not isinstance(category, str):
+            raise TypeError("Category must be a string.")
+        elif not len(category) > 0:
+            raise ValueError("Category must be longer than 0 characters.")
+        else:
+            self._category = category
+
+    # Returns a list of all the articles the magazine has published
     def articles(self):
-        pass
+        return [article for article in Article.all if article.magazine == self]
 
+    # Returns a unique list of authors who have written for this magazine
     def contributors(self):
-        pass
+        return list({author for author in self.articles()})
 
     def article_titles(self):
         pass
 
     def contributing_authors(self):
         pass
+
+    def __repr__(self):
+        return f"Magazine(name={self.name}, category={self.category})"
+
+
+# TESTING
+    
+author_1 = Author("Carry Bradshaw")
+author_2 = Author("Stephanie Bertram")
+magazine_1 = Magazine("Vogue", "Fashion")
+magazine_2 = Magazine("AD", "Architecture")
+magazine_3 = Magazine("GQ", "Fashion")
+Article(author_1, magazine_1, "How to wear a tutu with style")
+Article(author_2, magazine_2, "2023 Eccentric Design Trends")
+
+# print(author_1.articles())
+# print(author_1.magazines())
+print(magazine_2.contributors())
