@@ -171,24 +171,24 @@ class Magazine:
 
 
 
-# TESTING
+# # TESTING
     
-author_1 = Author("Carry Bradshaw")
-author_2 = Author("Stephanie Bertram")
-magazine_1 = Magazine("Vogue", "Fashion")
-magazine_2 = Magazine("AD", "Architecture")
-magazine_3 = Magazine("GQ", "Fashion")
-magazine_4 = Magazine("Sunset", "Lifestyle")
-Article(author_1, magazine_1, "How to wear a tutu with style") # Carrie Bradshaw, Vogue
-Article(author_1, magazine_1, "Style article 2") # Carrie Bradshaw, Vogue
-Article(author_1, magazine_1, "Style article 3") # Carrie Bradshaw, Vogue
-Article(author_1, magazine_3, "How to wear a tutu with style") # Carrie Bradshaw, GQ
-Article(author_2, magazine_2, "2023 Eccentric Design Trends") #Nathaniel Hawthorne, AD
+# author_1 = Author("Carry Bradshaw")
+# author_2 = Author("Stephanie Bertram")
+# magazine_1 = Magazine("Vogue", "Fashion")
+# magazine_2 = Magazine("AD", "Architecture")
+# magazine_3 = Magazine("GQ", "Fashion")
+# magazine_4 = Magazine("Sunset", "Lifestyle")
+# Article(author_1, magazine_1, "How to wear a tutu with style") # Carrie Bradshaw, Vogue
+# Article(author_1, magazine_1, "Style article 2") # Carrie Bradshaw, Vogue
+# Article(author_1, magazine_1, "Style article 3") # Carrie Bradshaw, Vogue
+# Article(author_1, magazine_3, "How to wear a tutu with style") # Carrie Bradshaw, GQ
+# Article(author_2, magazine_2, "2023 Eccentric Design Trends") #Nathaniel Hawthorne, AD
 
-print("Articles:", author_1.articles())
-print("Magazines:", author_1.magazines())
-print("Topic Areas:", author_1.topic_areas())
-print("Contributors:", magazine_2.contributors())
-print("Article Titles:", magazine_2.article_titles())
-print("Article Titles:", magazine_4.article_titles())
-print("Contributing Authors:", magazine_1.contributing_authors())
+# print("Articles:", author_1.articles())
+# print("Magazines:", author_1.magazines())
+# print("Topic Areas:", author_1.topic_areas())
+# print("Contributors:", magazine_2.contributors())
+# print("Article Titles:", magazine_2.article_titles())
+# print("Article Titles:", magazine_4.article_titles())
+# print("Contributing Authors:", magazine_1.contributing_authors())
